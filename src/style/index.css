@@ -17,10 +17,15 @@
     --color-neutral-700: hsl(245, 19%, 35%);
     --color-neutral-900: hsl(248, 70%, 10%);
 
+    --color-white-10: hsl(0, 0%, 100%, 0.1);
+
     --color-orange-500: hsl(7, 88%, 67%);
     --color-orange-700: hsl(7, 71%, 60%);
 
     --color-gradient-text: hsl(7, 86%, 67%) to hsl(0, 0%, 100%);
+
+
+    --breakpoint-sm: 400px;
 }
 
 @layer components {
@@ -71,6 +76,11 @@
         100% {
             transform: rotate(-360deg);
         }
+    }
+
+
+    .input_box {
+        @apply w-full flex flex-col gap-2;
     }
 
 }
