@@ -22,10 +22,12 @@
     --color-orange-500: hsl(7, 88%, 67%);
     --color-orange-700: hsl(7, 71%, 60%);
 
-    --color-gradient-text: hsl(7, 86%, 67%) to hsl(0, 0%, 100%);
-
-
+    --color-gradient-1: hsl(7, 86%, 67%);
+    --color-gradient-2: hsl(0, 0%, 100%);
+    
     --breakpoint-sm: 400px;
+    --breakpoint-sm-c: 640px;
+    --breakpoint-ph-1: 480px;
 }
 
 @layer components {

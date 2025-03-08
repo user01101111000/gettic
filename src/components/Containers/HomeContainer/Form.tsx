@@ -1,5 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { NavigateFunction, useNavigate } from "react-router";
 import { z } from "zod";
@@ -45,7 +45,7 @@ type Inputs = {
 
 const Form: () => React.JSX.Element = (): React.JSX.Element => {
 
-    const navigate : NavigateFunction = useNavigate();
+    const navigate: NavigateFunction = useNavigate();
     const [previewImage, setPreviewImage] = React.useState<string | null>(null);
     const [isDragOver, setIsDragOver] = React.useState<boolean>(false);
     const { register, handleSubmit, formState: { errors }, watch, setValue } = useForm<Inputs>({
@@ -55,7 +55,7 @@ const Form: () => React.JSX.Element = (): React.JSX.Element => {
 
     const selectedImage: FileList | null = watch("files") || null;
 
-    useEffect((): void => {
+    React.useEffect((): void => {
 
         const file: File | null = getFile(selectedImage);
 
@@ -167,7 +167,7 @@ const Form: () => React.JSX.Element = (): React.JSX.Element => {
             {errors.github_username && <p className="text-[.7rem] text-red-500">{errors.github_username.message}</p>}
         </div>
 
-        <input type="submit" value={"Generate my ticket"} className="w-full text-[.8rem] bg-orange-700 rounded-xl p-2 mt-3 cursor-pointer lg:text-[1rem]" />
+        <input type="submit" value={"Generate my ticket"} className="w-full text-[.8rem] bg-orange-500 rounded-xl p-2 mt-3 cursor-pointer lg:text-[1rem] hover:bg-orange-700 transition-colors duration-300 ease-in-out" />
 
     </form>
 };
