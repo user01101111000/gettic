@@ -10,10 +10,11 @@ const Layout: () => React.JSX.Element = (): React.JSX.Element => {
             <img className="absolute top-0 left-0 w-full h-full object-cover" src={"/images/pattern-lines.svg"} alt="lines" />
             <img className="absolute top-10 right-0 w-80" src={"/images/pattern-squiggly-line-top.svg"} alt="squiggly-line-top" />
             <img className="absolute bottom-0 left-0 w-[1000px]" src={"/images/pattern-squiggly-line-bottom-desktop.svg"} alt="squiggly-line-bottom" />
+            <img className="absolute top-1/2 right-1/12 w-40" src="/images/pattern-circle.svg" alt="circle" />
         </figure>
 
-
         <Header />
+
         <React.Suspense fallback={<LoadingPage />}>
             <Outlet />
         </React.Suspense>

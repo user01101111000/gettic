@@ -3,7 +3,9 @@ import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { NavigateFunction, useNavigate } from "react-router";
 import { z } from "zod";
-
+import { useUser } from "../../../context/UserContext";
+import { User } from "../../../types/user_context";
+import { v4 } from "uuid"
 
 function getFile(files: FileList | null): File | null {
     if (files && files.length > 0) return files[0];
@@ -35,20 +37,13 @@ const schema = z.object({
     github_username: z.string().min(3, { message: "Github kullanıcı adınız en az 3 karakterden oluşmalıdır" })
 });
 
-
-type Inputs = {
-    files: FileList | null,
-    full_name: string,
-    email: string,
-    github_username: string
-};
-
 const Form: () => React.JSX.Element = (): React.JSX.Element => {
 
+    const { setUser } = useUser()!;
     const navigate: NavigateFunction = useNavigate();
     const [previewImage, setPreviewImage] = React.useState<string | null>(null);
     const [isDragOver, setIsDragOver] = React.useState<boolean>(false);
-    const { register, handleSubmit, formState: { errors }, watch, setValue } = useForm<Inputs>({
+    const { register, handleSubmit, formState: { errors }, watch, setValue } = useForm<User>({
         resolver: zodResolver(schema)
     });
 
@@ -65,9 +60,12 @@ const Form: () => React.JSX.Element = (): React.JSX.Element => {
 
     }, [selectedImage]);
 
-    const onSubmit: SubmitHandler<Inputs> = (data: Inputs): void => {
-        console.log(data);
-        navigate("/ticket");
+    const onSubmit: SubmitHandler<User> = (data: User): void => {
+
+        const id: string = v4();
+
+        setUser(data);
+        navigate("/ticket/" + id, { replace: true });
     }
 
     return <form className="w-full max-w-[500px] flex flex-col items-center p-4 gap-2 lg:gap-3" onSubmit={handleSubmit(onSubmit)}>
