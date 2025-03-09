@@ -2,40 +2,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { NavigateFunction, useNavigate } from "react-router";
-import { z } from "zod";
 import { useUser } from "../../../context/UserContext";
 import { User } from "../../../types/user_context";
 import { v4 } from "uuid"
-
-function getFile(files: FileList | null): File | null {
-    if (files && files.length > 0) return files[0];
-    return null
-}
-
-
-const fileSchema = z
-    .custom<FileList | null>((value) => value instanceof FileList, {
-        message: "Lütfen bir dosya yükleyin",
-    })
-    .refine((files) => files!.length > 0, { message: "En az bir dosya seçmelisiniz" })
-    .refine(
-        (files) => Array.from(files as FileList).every((file) => file.size <= 5 * 1024 * 1024),
-        { message: "Dosya boyutu 5MB'yi geçemez" }
-    )
-    .refine(
-        (files) =>
-            Array.from(files as FileList).every((file) =>
-                ["image/jpeg", "image/png"].includes(file.type)
-            ),
-        { message: "Sadece JPG veya PNG dosyaları yükleyebilirsiniz" }
-    );
-
-const schema = z.object({
-    files: fileSchema,
-    full_name: z.string().min(3, { message: "Adınız en az 3 karakterden oluşmalıdır" }),
-    email: z.string().email({ message: "Lütfen geçerli bir e-posta adresi girin" }),
-    github_username: z.string().min(3, { message: "Github kullanıcı adınız en az 3 karakterden oluşmalıdır" })
-});
+import { getFile, schema } from "../../../utils/form_schema";
 
 const Form: () => React.JSX.Element = (): React.JSX.Element => {
 
