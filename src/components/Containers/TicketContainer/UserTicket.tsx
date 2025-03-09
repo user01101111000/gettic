@@ -18,41 +18,40 @@ const UserTicket: () => React.JSX.Element = (): React.JSX.Element => {
                     <img className="w-full h-full" src="/images/pattern-ticket.svg" alt="ticket" />
                 </figure>
 
-                <div className="flex flex-col gap-1 absolute top-3 left-3 sm-c:top-6 sm-c:left-6">
+                <div className="flex flex-col gap-1 absolute top-3 left-3 sm-c:top-6 sm-c:left-6 sm-c:gap-2">
                     <img className="w-28 ph-1:w-40" src="/images/logo-full.svg" alt="logo_full" />
-                    <p className="text-[.7rem] ph-1:text-[1rem]">{dayjs().add(3, "month").format("DD MMM, YYYY").toUpperCase()} / USA, LA</p>
+                    <p className="text-[.7rem] ph-1:text-[1rem] text-neutral-400">{dayjs().add(3, "month").format("DD MMM, YYYY").toUpperCase()} / USA, LA</p>
                 </div>
 
-
-                <div className="absolute bottom-2 left-3 flex items-center gap-2 sm-c:bottom-6 sm-c:left-6">
+                <div className="absolute bottom-2 left-3 flex items-center gap-2 sm-c:bottom-6 sm-c:left-6 sm-c:gap-3">
                     <figure className="w-8 h-8 ph-1:w-12 ph-1:h-12 rounded-xl overflow-hidden">
-                        <img className="w-full h-full bg-cover" src={user?.files && user?.files.length > 0 ? URL.createObjectURL(user?.files[0]) : "https://avatars.githubusercontent.com/u/168995027?s=400&v=4"} alt="" />
+                        <img className="h-full w-full object-cover" src={user?.files && user?.files.length > 0 ? URL.createObjectURL(user?.files[0]) : "https://avatars.githubusercontent.com/u/168995027?s=400&v=4"} alt="small_picture" />
                     </figure>
 
-                    <div className="flex flex-col gap-1">
+                    <div className="flex flex-col gap-[.1rem]">
                         <h1 className="text-[.8rem] ph-1:text-xl">{user?.full_name ?? "Unknown"}</h1>
-                        <a className="flex items-center gap-1 cursor-pointer" href={"https://github.com/" + user?.github_username} target="_blank" >
-                            <figure className="w-5 h-5 ph-1:w-6 ph-1:h-6">
-                                <img className="w-full h-full" src="/images/github.png" alt="github" />
-                            </figure>
-                            <p className="text-[.7rem] ph-1:text-[1rem]">@{user?.github_username ?? "unknown"}</p>
+                        <a className="flex items-center gap-[.2rem] cursor-pointer" href={"https://github.com/" + user?.github_username} target="_blank" >
+
+                            <img className="w-[.8rem] h-[.8rem] ph-1:w-5 ph-1:h-5" src="/icons/icon-github.svg" alt="github" />
+
+                            <p className="text-[.7rem] ph-1:text-[1rem] text-neutral-400">@{user?.github_username ?? "unknown"}</p>
                         </a>
                     </div>
 
                 </div>
 
-                <p className="rotate-90 absolute right-0 top-1/2 -translate-y-1/2 ph-1:text-2xl">{id?.slice(0, 5)}#</p>
+                <p className="rotate-90 absolute right-0 top-1/2 -translate-y-1/2 ph-1:text-2xl text-neutral-400">{id?.slice(0, 5)}#</p>
             </div>
 
         </div>
 
-        <button className="w-fit mx-auto py-2 px-5 rounded-full bg-orange-500 text-[.9rem] lg:text-[1rem] cursor-pointer hover:bg-orange-700 transcition-colors duration-300 ease-in-out" onClick={(): void => {
+        <button className="w-fit mx-auto py-2 px-5 rounded-full bg-orange-500 text-[.9rem] font-bold lg:text-[1rem] cursor-pointer hover:bg-orange-700 transcition-colors duration-300 ease-in-out" onClick={(): void => {
 
             const element: HTMLElement | null = document.getElementById("ticket");
 
             if (element) {
-                domtoimage.toPng(element).then((dataUrl) => {
-                    const link = document.createElement("a");
+                domtoimage.toPng(element).then((dataUrl: string) => {
+                    const link: HTMLAnchorElement = document.createElement("a");
                     link.href = dataUrl;
                     link.download = `CodingConf_Ticket#${id?.slice(0, 5)}.png`;
                     link.click();

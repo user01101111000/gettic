@@ -17,7 +17,6 @@ const Form: () => React.JSX.Element = (): React.JSX.Element => {
         resolver: zodResolver(schema)
     });
 
-
     const selectedImage: FileList | null = watch("files") || null;
 
     React.useEffect((): void => {
@@ -38,22 +37,22 @@ const Form: () => React.JSX.Element = (): React.JSX.Element => {
         navigate("/ticket/" + id, { replace: true });
     }
 
-    return <form className="w-full max-w-[500px] flex flex-col items-center p-4 gap-2 lg:gap-3" onSubmit={handleSubmit(onSubmit)}>
+    return <form className="w-full max-w-[500px] flex flex-col items-center p-2 gap-2 lg:gap-3" onSubmit={handleSubmit(onSubmit)}>
 
         <div className="input_box">
             <p className="text-[.8rem] lg:text-[1rem]">Upload avatar</p>
             <label htmlFor="avatar" className={`w-full h-32 border-2 bg-white-10 border-dashed border-neutral-600 flex justify-center items-center flex-col gap-2 rounded-xl p-2 text-center cursor-pointer ${isDragOver ? "!bg-neutral-800 border-neutral-100 border-4" : ""}`}
-                onDragOver={(e) => {
+                onDragOver={(e): void => {
                     e.preventDefault();
                     e.stopPropagation();
                 }}
-                onDragEnter={(e) => {
+                onDragEnter={(e): void => {
                     e.preventDefault();
                     e.stopPropagation();
 
                     setIsDragOver(true);
                 }}
-                onDragLeave={(e) => {
+                onDragLeave={(e): void => {
 
                     e.preventDefault();
                     e.stopPropagation();
@@ -62,7 +61,7 @@ const Form: () => React.JSX.Element = (): React.JSX.Element => {
                         setIsDragOver(false);
                     }
                 }}
-                onDrop={(e) => {
+                onDrop={(e): void => {
                     e.preventDefault();
                     e.stopPropagation();
 
@@ -80,14 +79,14 @@ const Form: () => React.JSX.Element = (): React.JSX.Element => {
                     </figure>
 
                     <div className="flex items-center gap-2 mt-2">
-                        <button className="text-[.6rem] text-neutral-300 bg-neutral-700 px-2 py-1 rounded-xl cursor-pointer" onClick={(e) => {
+                        <button className="text-[.6rem] text-neutral-300 bg-neutral-700 px-2 py-1 rounded-xl cursor-pointer hover:bg-neutral-800 transition-colors duration-100 ease-in" onClick={(e): void => {
                             e.preventDefault();
                             e.stopPropagation();
 
                             setPreviewImage(null);
                             setValue("files", null);
                         }}>Remove image</button>
-                        <button className="text-[.6rem] text-neutral-300 bg-neutral-700 px-2 py-1 rounded-xl cursor-pointer" onClick={(e) => {
+                        <button className="text-[.6rem] text-neutral-300 bg-neutral-700 px-2 py-1 rounded-xl cursor-pointer hover:bg-neutral-800 transition-colors duration-100 ease-in" onClick={(e): void => {
 
                             e.preventDefault();
                             e.stopPropagation();
@@ -106,36 +105,36 @@ const Form: () => React.JSX.Element = (): React.JSX.Element => {
                 </>}
 
             </label>
-            <input disabled={Boolean(previewImage)} type="file" {...register("files")} id="avatar" className="hidden" onDrop={(e) => {
-                console.log("isledi");
-            }} />
+
+            <input disabled={Boolean(previewImage)} type="file" {...register("files")} id="avatar" className="hidden" />
+
             <p className="text-[.6rem] text-neutral-400">ⓘ Upload your photo (JPG or PNG, max size : 5MB)</p>
-            {errors.files && <p className="text-[.7rem] text-red-500">{errors.files.message}</p>}
+
+            {errors.files && <p className="text-[.6rem] text-red-500">{errors.files.message}</p>}
+
         </div>
 
 
         <div className="input_box">
             <label className="text-[.8rem] lg:text-[1rem]" htmlFor="full_name">Full Name</label>
-            <input className="bg-white-10 px-2 py-1 rounded-xl border-2 border-neutral-600 lg:p-2" type="text" {...register("full_name")} id="full_name" />
-            {errors.full_name && <p className="text-[.7rem] text-red-500">{errors.full_name.message}</p>}
+            <input className="bg-white-10 text-[.8rem] p-[.4rem] rounded-[.5rem] border-2 border-neutral-600" type="text" {...register("full_name")} id="full_name" placeholder="John Doe" />
+            {errors.full_name && <p className="text-[.6rem] text-red-500">{errors.full_name.message}</p>}
         </div>
 
 
         <div className="input_box">
             <label className="text-[.8rem] lg:text-[1rem]" htmlFor="email">Email Address</label>
-            <input className="bg-white-10 px-2 py-1 rounded-xl border-2 border-neutral-600 lg:p-2" type="email" {...register("email")} id="email" />
-            {errors.email && <p className="text-[.7rem] text-red-500">{errors.email.message}</p>}
+            <input className="bg-white-10 text-[.8rem] p-[.4rem] rounded-[.5rem] border-2 border-neutral-600" type="email" {...register("email")} id="email" placeholder="johndoe@example.com" />
+            {errors.email && <p className="text-[.6rem] text-red-500">{errors.email.message}</p>}
         </div>
-
-
 
         <div className="input_box">
             <label className="text-[.8rem] lg:text-[1rem]" htmlFor="github_username">Github Username</label>
-            <input className="bg-white-10 px-2 py-1 rounded-xl border-2 border-neutral-600 lg:p-2" type="text" {...register("github_username")} id="github_username" />
-            {errors.github_username && <p className="text-[.7rem] text-red-500">{errors.github_username.message}</p>}
+            <input className="bg-white-10 text-[.8rem] p-[.4rem] rounded-[.5rem] border-2 border-neutral-600" type="text" {...register("github_username")} id="github_username" placeholder="johndoe" />
+            {errors.github_username && <p className="text-[.6rem] text-red-500">{errors.github_username.message}</p>}
         </div>
 
-        <input type="submit" value={"Generate my ticket"} className="w-full text-[.8rem] bg-orange-500 rounded-xl p-2 mt-3 cursor-pointer lg:text-[1rem] hover:bg-orange-700 transition-colors duration-300 ease-in-out" />
+        <input type="submit" value={"Get ticket"} className="w-full text-[.8rem] font-bold p-[.4rem] bg-orange-500 rounded-[.5rem] mt-3 cursor-pointer lg:text-[1rem] hover:bg-orange-700 transition-colors duration-300 ease-in-out" />
 
     </form>
 };
