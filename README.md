@@ -1,5 +1,5 @@
 <div align="center">
-<img src ="public/images/coding_conf_text.png" alt="coding conf" width="30%" title='coding conf' />
+<img src ="public/images/gettic_text.png" alt="coding conf" width="30%" title='coding conf' />
 </div>
 
 <br />
@@ -8,5 +8,5 @@ A website that prepares personalized tickets for coding events. After purchasing
 
 <br />
 
-<div align="center"><img src ="public/images/coding_conf_poster.png" alt="coding conf" width="100%" title='coding conf' />
+<div align="center"><img src ="public/images/gettic_poster.png" alt="coding conf" width="100%" title='coding conf' />
 </div>
