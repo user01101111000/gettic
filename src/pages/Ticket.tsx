@@ -33,8 +33,6 @@ const Ticket: () => React.JSX.Element = (): React.JSX.Element => {
                 setIsError(true);
             })
             .finally((): void => setLoading(false));
-
-
     }, []);
 
 

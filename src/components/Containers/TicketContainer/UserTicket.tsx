@@ -15,7 +15,7 @@ const UserTicket: () => React.JSX.Element = (): React.JSX.Element => {
 
             <div id="ticket">
                 <figure className="min-w-[295px] max-w-[600px] mx-auto">
-                    <img className="w-full h-full" src="/images/pattern-ticket.svg" alt="ticket" />
+                    <img className="w-full h-full" src="/images/pattern-ticket.webp" alt="ticket" />
                 </figure>
 
                 <div className="flex flex-col gap-1 absolute top-3 left-3 sm-c:top-6 sm-c:left-6 sm-c:gap-2">
