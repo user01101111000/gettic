@@ -1,5 +1,5 @@
 import React from "react";
-import { NavigateFunction, replace, useNavigate } from "react-router";
+import { NavigateFunction, useNavigate } from "react-router";
 
 const NotFound: () => React.JSX.Element = (): React.JSX.Element => {
 
