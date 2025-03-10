@@ -41,7 +41,7 @@ const Form: () => React.JSX.Element = (): React.JSX.Element => {
 
         <div className="input_box">
             <p className="text-[.8rem] lg:text-[1rem]">Upload avatar</p>
-            <label htmlFor="avatar" className={`w-full h-32 border-2 bg-white-10 border-dashed border-neutral-600 flex justify-center items-center flex-col gap-2 rounded-xl p-2 text-center cursor-pointer ${isDragOver ? "!bg-neutral-800 border-neutral-100 border-4" : ""}`}
+            <label htmlFor="avatar" className={`w-full h-32 border-2 bg-white-10 border-dashed border-neutral-600 flex justify-center items-center flex-col gap-2 rounded-xl p-2 text-center cursor-pointer ${isDragOver ? "!bg-neutral-800 border-neutral-100 border-4" : ""} ${errors.files && "!border-red-500"}`}
                 onDragOver={(e): void => {
                     e.preventDefault();
                     e.stopPropagation();
@@ -114,23 +114,22 @@ const Form: () => React.JSX.Element = (): React.JSX.Element => {
 
         </div>
 
-
         <div className="input_box">
             <label className="text-[.8rem] lg:text-[1rem]" htmlFor="full_name">Full Name</label>
-            <input className="bg-white-10 text-[.8rem] p-[.4rem] rounded-[.5rem] border-2 border-neutral-600" type="text" {...register("full_name")} id="full_name" placeholder="John Doe" />
+            <input className={`bg-white-10 text-[.8rem] p-[.4rem] rounded-[.5rem] border-2 border-neutral-600 ${errors.full_name && "border-red-500"}`} type="text" {...register("full_name")} id="full_name" placeholder="John Doe" />
             {errors.full_name && <p className="text-[.6rem] text-red-500">{errors.full_name.message}</p>}
         </div>
 
 
         <div className="input_box">
             <label className="text-[.8rem] lg:text-[1rem]" htmlFor="email">Email Address</label>
-            <input className="bg-white-10 text-[.8rem] p-[.4rem] rounded-[.5rem] border-2 border-neutral-600" type="email" {...register("email")} id="email" placeholder="johndoe@example.com" />
+            <input className={`bg-white-10 text-[.8rem] p-[.4rem] rounded-[.5rem] border-2 border-neutral-600 ${errors.email && "border-red-500"}`} type="email" {...register("email")} id="email" placeholder="johndoe@example.com" />
             {errors.email && <p className="text-[.6rem] text-red-500">{errors.email.message}</p>}
         </div>
 
         <div className="input_box">
             <label className="text-[.8rem] lg:text-[1rem]" htmlFor="github_username">Github Username</label>
-            <input className="bg-white-10 text-[.8rem] p-[.4rem] rounded-[.5rem] border-2 border-neutral-600" type="text" {...register("github_username")} id="github_username" placeholder="johndoe" />
+            <input className={`bg-white-10 text-[.8rem] p-[.4rem] rounded-[.5rem] border-2 border-neutral-600 ${errors.github_username && "border-red-500"}`} type="text" {...register("github_username")} id="github_username" placeholder="johndoe" />
             {errors.github_username && <p className="text-[.6rem] text-red-500">{errors.github_username.message}</p>}
         </div>
 
