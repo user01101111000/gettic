@@ -15,12 +15,4 @@ const UserContextProvider: React.FC<UserContextProviderProps> = ({ children }: U
     return <UserContext.Provider value={data}>{children}</UserContext.Provider>
 };
 
-
-const useUser: () => UserContextProps | null = (): UserContextProps | null => {
-    const context: UserContextProps | null = React.useContext(UserContext);
-    if (!context) throw new Error("useAuth must be used within a UserContextProvider");
-    return context;
-}
-
-
-export { UserContextProvider, useUser };
+export { UserContextProvider, UserContext };

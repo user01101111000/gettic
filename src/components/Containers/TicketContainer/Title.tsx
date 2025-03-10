@@ -1,5 +1,5 @@
 import React from "react";
-import { useUser } from "../../../context/UserContext";
+import useUser from "../../../hooks/useUser";
 
 const Title: () => React.JSX.Element = (): React.JSX.Element => {
 

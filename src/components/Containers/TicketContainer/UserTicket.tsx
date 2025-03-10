@@ -1,8 +1,8 @@
 import React from "react";
-import { useUser } from "../../../context/UserContext";
 import { useParams } from "react-router";
 import domtoimage from "dom-to-image";
 import dayjs from "dayjs";
+import useUser from "../../../hooks/useUser";
 
 const UserTicket: () => React.JSX.Element = (): React.JSX.Element => {
 

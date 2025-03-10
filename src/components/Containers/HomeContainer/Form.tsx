@@ -2,10 +2,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { NavigateFunction, useNavigate } from "react-router";
-import { useUser } from "../../../context/UserContext";
 import { User } from "../../../types/user_context";
 import { v4 } from "uuid"
 import { getFile, schema } from "../../../utils/form_schema";
+import useUser from "../../../hooks/useUser";
 
 const Form: () => React.JSX.Element = (): React.JSX.Element => {
 
