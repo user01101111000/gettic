@@ -4,7 +4,20 @@ import Header from "../components/Layout/Header";
 import LoadingPage from "../components/Layout/LoadingPage";
 
 const Layout: () => React.JSX.Element = (): React.JSX.Element => {
+
+    const [isLoading, setLoading] = React.useState<boolean>(true);
+
+    React.useLayoutEffect((): void => {
+        setLoading(true);
+        setTimeout((): void => {
+            setLoading(false);
+        }, 1000);
+    }, []);
+
+
     return <main className="min-h-dvh w-full grid grid-rows-[auto_1fr] text-white relative">
+
+        {isLoading && <LoadingPage />}
 
         <figure className="absolute h-full w-full bg-[url('/images/background-desktop.webp')] bg-cover bg-center inset-0 z-[-1] select-none pointer-events-none overflow-hidden">
             <img className="absolute top-0 left-0 w-full h-full object-cover" src={"/images/pattern-lines.svg"} alt="lines" />
