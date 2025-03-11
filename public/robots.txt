@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Allow: /home/
 Disallow: /ticket/
-Sitemap: https://gettic.vercel.app/sitemap.xml
+Sitemap: https://gettic.vercel.app/sitemap.txt
