@@ -6,7 +6,6 @@ type ProtectedRouteProps = {
     children: React.ReactNode
 };
 
-
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children }: ProtectedRouteProps): React.JSX.Element => {
     const { user } = useUser()!;
 

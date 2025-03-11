@@ -15,24 +15,24 @@ const UserTicket: () => React.JSX.Element = (): React.JSX.Element => {
 
             <div id="ticket">
                 <figure className="min-w-[295px] max-w-[600px] mx-auto">
-                    <img className="w-full h-full" src="/images/pattern-ticket.webp" alt="ticket" />
+                    <img height={"20px"} width={"20px"} className="w-full h-full" src="/images/pattern-ticket.webp" alt="ticket" fetchPriority="high" />
                 </figure>
 
                 <div className="flex flex-col gap-1 absolute top-3 left-3 sm-c:top-6 sm-c:left-6 sm-c:gap-2">
-                    <img className="w-28 ph-1:w-40" src="/images/logo-full.svg" alt="logo_full" />
+                    <img height={"20px"} width={"20px"} className="w-28 ph-1:w-40" src="/images/logo-full.svg" alt="logo_full" />
                     <p className="text-[.7rem] ph-1:text-[1rem] text-neutral-400">{dayjs().add(3, "month").format("DD MMM, YYYY").toUpperCase()} / USA, LA</p>
                 </div>
 
                 <div className="absolute bottom-2 left-3 flex items-center gap-2 sm-c:bottom-6 sm-c:left-6 sm-c:gap-3">
                     <figure className="w-8 h-8 ph-1:w-12 ph-1:h-12 rounded-xl overflow-hidden">
-                        <img className="h-full w-full object-cover" src={user?.files && user?.files.length > 0 ? URL.createObjectURL(user?.files[0]) : "https://avatars.githubusercontent.com/u/168995027?s=400&v=4"} alt="small_picture" />
+                        <img height={"20px"} width={"20px"} className="h-full w-full object-cover" src={user?.files && user?.files.length > 0 ? URL.createObjectURL(user?.files[0]) : "https://avatars.githubusercontent.com/u/168995027?s=400&v=4"} alt="small_picture" />
                     </figure>
 
                     <div className="flex flex-col gap-[.1rem]">
-                        <h1 className="text-[.8rem] ph-1:text-xl">{user?.full_name ?? "Unknown"}</h1>
+                        <p className="text-[.8rem] ph-1:text-xl">{user?.full_name ?? "Unknown"}</p>
                         <a className="flex items-center gap-[.2rem] cursor-pointer" href={"https://github.com/" + user?.github_username} target="_blank" >
 
-                            <img className="w-[.8rem] h-[.8rem] ph-1:w-5 ph-1:h-5" src="/icons/icon-github.svg" alt="github" />
+                            <img height={"20px"} width={"20px"} className="w-[.8rem] h-[.8rem] ph-1:w-5 ph-1:h-5" src="/icons/icon-github.svg" alt="github" />
 
                             <p className="text-[.7rem] ph-1:text-[1rem] text-neutral-400">@{user?.github_username ?? "unknown"}</p>
                         </a>

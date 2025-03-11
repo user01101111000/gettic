@@ -99,7 +99,7 @@ const Form: () => React.JSX.Element = (): React.JSX.Element => {
                     </div>
                 </> : <>
                     <figure className="w-10 h-10 bg-neutral-700 rounded-xl flex items-center justify-center">
-                        <img src="/icons/icon-upload.svg" alt="upload" />
+                        <img height={"33px"} width={"33px"} src="/icons/icon-upload.svg" alt="upload" />
                     </figure>
                     <p className="text-[.7rem] text-neutral-300">Drag and drop or click to upload</p>
                 </>}
