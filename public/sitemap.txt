@@ -1,2 +1,0 @@
-https://gettic.vercel.app/
-https://gettic.vercel.app/home
