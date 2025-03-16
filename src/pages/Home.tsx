@@ -15,7 +15,7 @@ const Home: () => React.JSX.Element = (): React.JSX.Element => {
         <Helmet>
             <title>Gettic</title>
             <link rel="canonical" href={window.location.href} />
-            <meta name="description" content="Get your ticket now at the coding conference." />
+            <meta name="description" content="A website that creates a ticket for your name and picture for easy access to the coding conference. Get your ticket now at the coding conference." />
         </Helmet>
         <HomeContainer />
     </>

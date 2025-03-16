@@ -99,7 +99,7 @@ const Form: () => React.JSX.Element = (): React.JSX.Element => {
                     </div>
                 </> : <>
                     <figure className="w-10 h-10 bg-neutral-700 rounded-xl flex items-center justify-center">
-                        <img height={"33px"} width={"33px"} src="/icons/icon-upload.svg" alt="upload" />
+                        <img height={"33px"} width={"33px"} src="/icons/icon-upload.svg" alt="upload" title="upload" loading="eager" />
                     </figure>
                     <p className="text-[.7rem] text-neutral-300">Drag and drop or click to upload</p>
                 </>}
@@ -133,7 +133,7 @@ const Form: () => React.JSX.Element = (): React.JSX.Element => {
             {errors.github_username && <p className="text-[.6rem] text-red-500">{errors.github_username.message}</p>}
         </div>
 
-        <input type="submit" value={"Get ticket"} className="w-full text-[.8rem] font-bold p-[.4rem] bg-orange-500 rounded-[.5rem] mt-3 cursor-pointer lg:text-[1rem] hover:bg-orange-700 transition-colors duration-300 ease-in-out" />
+        <input type="submit" value={"Get ticket"} className="w-full text-[.8rem] font-bold p-[.4rem] bg-orange-700 rounded-[.5rem] mt-3 cursor-pointer lg:text-[1rem] hover:bg-orange-700 transition-colors duration-300 ease-in-out" />
 
     </form>
 };
